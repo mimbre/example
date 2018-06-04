@@ -1,0 +1,12 @@
+{
+    "require": {
+        "kunalvarma05/dropbox-php-sdk": "^0.2.1",
+        "mimbre/http-json": "^2.0",
+        "mimbre/db-mysql": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "": "app/src"
+        }
+    }
+}

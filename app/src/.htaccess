@@ -1,0 +1,4 @@
+# These two lines prevents from accessing directly to the scripts
+# under the 'src' folder.
+Order deny,allow
+Deny from all

@@ -1,0 +1,10 @@
+Options -Indexes
+php_flag display_errors Off
+
+# Cross-Origin Resource Sharing (CORS)
+<IfModule mod_headers.c>
+  Header set Access-Control-Allow-Credentials true
+  Header add Access-Control-Allow-Methods: "GET,POST,OPTIONS,DELETE,PUT"
+  Header add Access-Control-Allow-Headers: "Content-Type"
+  Header add Access-Control-Allow-Headers: "Authorization"
+</IfModule>
