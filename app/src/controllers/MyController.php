@@ -1,17 +1,15 @@
 <?php
 namespace controllers;
-use mimbre\db\exception\DbException;
+use \Exception;
 use mimbre\db\mysql\MySqlConnection;
-use mimbre\http\json\exception\ClientException;
-use mimbre\http\json\exception\ServerError;
-use mimbre\http\json\JsonController;
+use mimbre\http\HttpController;
 
 /**
- * A "controller" MUST extends JsonController.
+ * A "controller" MUST extends HttpController.
  *
  * This controller "intercepts" and processes HTTP requests.
  */
-class MyController extends JsonController
+class MyController extends HttpController
 {
     /**
      * Welcome message.
@@ -22,7 +20,7 @@ class MyController extends JsonController
 
     /**
      * Database connection.
-     * 
+     *
      * @var MySqlConnection
      */
     private $_db;
@@ -50,14 +48,7 @@ class MyController extends JsonController
      */
     public function open()
     {
-        try {
-            $this->_db = new MySqlConnection(
-                DB_NAME, DB_USER, DB_PASS, DB_HOST
-            );
-        } catch (DbException $e) {
-            // A 'server error' is an exception originated in the server-side.
-            throw new ServerError($e->getMessage());
-        }
+        $this->_db = new MySqlConnection(DB_NAME, DB_USER, DB_PASS, DB_HOST);
     }
 
     /**
@@ -74,8 +65,7 @@ class MyController extends JsonController
         $age = $this->getParam("age");
 
         if (!is_numeric($age)) {
-            // a 'client exception' is originated in the client-side.
-            throw new ClientException("Please provide a valid age");
+            throw new Exception("Please provide a valid age");
         }
 
         $this->welcomeMessage = "Welcome $username!";

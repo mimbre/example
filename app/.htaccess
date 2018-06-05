@@ -1,7 +1,9 @@
 Options -Indexes
-php_flag display_errors Off
 
-# Cross-Origin Resource Sharing (CORS)
+# Optionally you can disable 'display errors'
+# php_flag display_errors Off
+
+# Cross-Origin Resource Sharing (CORS).
 <IfModule mod_headers.c>
   Header set Access-Control-Allow-Credentials true
   Header add Access-Control-Allow-Methods: "GET,POST,OPTIONS,DELETE,PUT"
